@@ -4,7 +4,7 @@ import json
 import logging
 import datetime
 import torch
-from utils.util import ensure_dir
+from ..utils.util import ensure_dir
 
 
 class BaseTrainer:
@@ -42,7 +42,7 @@ class BaseTrainer:
 
             self.mnt_best = math.inf if self.mnt_mode == 'min' else -math.inf
             self.early_stop = cfg_trainer.get('early_stop', math.inf)
-        
+
         self.start_epoch = 1
 
         # setup directory for checkpoint saving

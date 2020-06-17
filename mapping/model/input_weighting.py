@@ -1,11 +1,10 @@
 import torch
 import torch.nn as nn
-from torch.autograd import Variable
 
 
 class InputWeighting(nn.Module):
     """
-    Inverted dropout, except drops out entire dimensions with same probability
+        Input weighting for lasso-type feature selection
     """
     def __init__(self, num_features):
         super().__init__()

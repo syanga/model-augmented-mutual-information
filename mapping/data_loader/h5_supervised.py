@@ -1,5 +1,5 @@
 from torchvision import datasets, transforms
-from base import BaseDataLoader
+from ..base import BaseDataLoader
 from torch.utils import data
 import h5py
 import numpy as np

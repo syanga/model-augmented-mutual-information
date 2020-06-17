@@ -8,12 +8,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 
-from utils import Logger
-import model as module_model
-import data_loader as module_data
-import evaluation.loss as module_loss
-import evaluation.metric as module_metric
-import trainer as module_trainer
+from .utils import Logger
+from . import model as module_model
+from . import data_loader as module_data
+from .evaluation import loss as module_loss
+from .evaluation import metric as module_metric
+from . import trainer as module_trainer
 
 
 class ModelManager:

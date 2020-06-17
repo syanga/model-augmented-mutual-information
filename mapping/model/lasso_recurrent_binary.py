@@ -5,7 +5,7 @@ import torch.nn as nn
 from torch.autograd import Variable
 from collections import OrderedDict
 
-from base import BaseModel
+from ..base import BaseModel
 from .input_weighting import *
 
 

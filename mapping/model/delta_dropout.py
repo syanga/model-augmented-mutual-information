@@ -1,4 +1,4 @@
-import torch
+""" Drop out random number of features from 1 to delta+1 """
 import torch.nn as nn
 from torch.autograd import Variable
 import numpy as np
@@ -6,16 +6,17 @@ import numpy as np
 
 class DeltaDropout(nn.Module):
     """
-    Inverted dropout, except drops out entire dimensions with same probability
+        Inverted dropout, except drops out entire dimensions with same probability
     """
     def __init__(self, delta):
         super().__init__()
         self.delta = delta
 
-
     def forward(self, z, enabled=True):
-        # input dimension: (N, dim, n_features)
-        # choose random features to drop out entirely
+        """
+            # input dimension: (N, dim, n_features)
+            # choose random features to drop out entirely
+        """
         if enabled:
             batch_size = z.shape[0]
             num_features = z.shape[2]

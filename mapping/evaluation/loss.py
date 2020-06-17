@@ -21,8 +21,8 @@ def gaussian_loss(output, target, offset=10):
 
 
 def bce_weighted(output, target, w1=1.0, w0=1.0, eps=1e-5):
-    target = target.reshape(target.shape[0],-1)
-    output = output.reshape(output.shape[0],-1)*(1.-2.*eps)+eps
+    target = target.reshape(target.shape[0], -1)
+    output = output.reshape(output.shape[0], -1)*(1.-2.*eps)+eps
     ce1 = -w1 * target * torch.log(output)
     ce0 = -w0 * (1.0-target) * torch.log(1.0-output)
     return (ce1 + ce0).mean()

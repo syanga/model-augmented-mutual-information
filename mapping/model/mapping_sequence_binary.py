@@ -5,8 +5,7 @@ import torch.nn as nn
 from torch.autograd import Variable
 from collections import OrderedDict
 
-from base import BaseModel
-from .block_dropout import BlockDropout
+from ..base import BaseModel
 from .jeffreys import *
 from .delta_dropout import DeltaDropout
 
