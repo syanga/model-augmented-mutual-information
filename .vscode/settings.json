@@ -1,0 +1,10 @@
+{
+    "python.pythonPath": "/home/alan/miniconda3/bin/python",
+    "python.linting.pylintArgs": [
+        "--generated-members=numpy.*, torch.*",
+        "--init-hook",
+        "import sys; sys.path.insert(0, '/home/alan/Repositories/model-augmented-mutual-information')"
+    ],
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+}
