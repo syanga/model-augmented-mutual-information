@@ -1,0 +1,61 @@
+{
+    "name": "4d_bullseye_regularized",
+    "n_gpu": 1,
+    "arch": {
+        "type": "MappingFFGaussian",
+        "args": {
+            "xdim": 4,
+            "ydim": 1,
+            "num_features": 6,
+            "dim_z_per": 1,
+            "encoder_layers": 42,
+            "decoder_layers": 400,
+            "block_drop": 0,
+            "delta": 5
+        }
+    },
+    "data_loader": {
+        "type": "NpSupervisedDataLoader",
+        "args": {
+            "x_path": "data/bullseye_3d_performance_x_data.npy",
+            "y_path": "data/bullseye_3d_performance_y_data.npy",
+            "batch_size": 50,
+            "shuffle": true,
+            "validation_split": 0.0,
+            "test_split": 0.0,
+            "num_workers": 6,
+            "seed": 0
+        }
+    },
+    "optimizer": {
+        "type": "Adam",
+        "args": {
+            "lr": 0.001,
+            "weight_decay": 0.0,
+            "amsgrad": true
+        }
+    },
+    "loss": {
+        "type": "gaussian_loss",
+        "reg_coeff": 0.1
+    },
+    "metrics": [],
+    "lr_scheduler": {
+        "type": "ReduceLROnPlateau",
+        "args": {
+            "patience": 30,
+            "factor": 0.5
+        }
+    },
+    "trainer": {
+        "type": "TrainerPushPull",
+        "epochs": 600,
+        "save_dir": "saved/",
+        "save_period": 150,
+        "verbosity": 1,
+        "monitor": "min loss",
+        "early_stop": 50,
+        "log_dir": "saved/runs",
+        "plotz": true
+    }
+}

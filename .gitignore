@@ -5,6 +5,7 @@ __pycache__/
 
 data/
 .DS_Store
+saved/
 
 # C extensions
 *.so

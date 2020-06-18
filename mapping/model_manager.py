@@ -67,9 +67,6 @@ class ModelManager:
     def train(self):
         self.model.train()
         self.trainer.train()
-        
-        # plot and save train/validation losses
-        pass
 
 
     def clean_checkpoint_files(self):

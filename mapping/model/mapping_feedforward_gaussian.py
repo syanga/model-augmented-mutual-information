@@ -31,10 +31,8 @@ class MappingFFGaussian(BaseModel):
         # x -> z
         self.encoders = nn.Sequential(OrderedDict([
             ('diaglin0', DiagonalLinear(num_features, xdim, encoder_layers)),
-            ('elu0', nn.ReLU()),
+            ('elu0', nn.ELU()),
             ('drop0', nn.Dropout(encoder_drop)),
-            # ('diaglin1', DiagonalLinear(num_features, encoder_layers, encoder_layers)),
-            # ('elu1', nn.ReLU()),
             ('diaglin2', DiagonalLinear(num_features, encoder_layers, dim_z_per)),
         ]))
 
@@ -45,21 +43,16 @@ class MappingFFGaussian(BaseModel):
         # z -> y
         self.decoder = nn.Sequential(OrderedDict([
             ('ffnn0', nn.Linear(num_features*(dim_z_per+1) if augment else num_features*dim_z_per, decoder_layers)),
-            ('elu0', nn.ReLU()),
+            ('elu0', nn.ELU()),
             ('drop0', nn.Dropout(decoder_drop)),
-            # ('ffnn1', nn.Linear(decoder_layers, ydim))
         ]))
 
         self.mu = nn.Sequential(OrderedDict([
-            # ('ffnn0', nn.Linear(decoder_layers, int(decoder_layers/2))),
-            # ('elu0', nn.ReLU()),
-            ('ffnn1', nn.Linear(int(decoder_layers/2*2), ydim)),
+            ('ffnn1', nn.Linear(decoder_layers, ydim)),
         ]))
 
         self.lv = nn.Sequential(OrderedDict([
-            # ('ffnn0', nn.Linear(decoder_layers, int(decoder_layers/2))),
-            # ('elu0', nn.ReLU()),
-            ('ffnn1', nn.Linear(int(decoder_layers/2*2), ydim))
+            ('ffnn1', nn.Linear(decoder_layers, ydim))
         ]))
 
 
