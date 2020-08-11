@@ -1,34 +1,32 @@
 {
-    "name": "3d_bullseye_regularized",
+    "name": "Bullseye2Dregularized",
     "n_gpu": 0,
     "arch": {
         "type": "MappingFFGaussian",
         "args": {
-            "xdim": 3,
+            "xdim": 2,
             "ydim": 1,
-            "num_features": 6,
-            "dim_z_per": 1,
-            "encoder_layers": 30,
-            "decoder_layers": 300,
-            "block_drop": 0,
-            "delta": 3
+            "num_features": 1,
+            "dim_z_per": 2,
+            "encoder_layers": 8,
+            "decoder_layers": 8,
+            "block_drop": 0.0
         }
     },
     "data_loader": {
-        "type": "NpSupervisedDataLoader",
+        "type": "SupervisedDataLoader",
         "args": {
-            "x_path": "data/bullseye_3d_performance_x_data.npy",
-            "y_path": "data/bullseye_3d_performance_y_data.npy",
-            "batch_size": 50,
+            "data_dir": "data/bullseye2dX.h5",
+            "batch_size": 25,
             "shuffle": true,
             "validation_split": 0.0,
             "test_split": 0.0,
-            "num_workers": 4,
+            "num_workers": 0,
             "seed": 0
         }
     },
     "optimizer": {
-        "type": "AdamW",
+        "type": "Adam",
         "args": {
             "lr": 0.001,
             "weight_decay": 0.0,
@@ -43,18 +41,18 @@
     "lr_scheduler": {
         "type": "ReduceLROnPlateau",
         "args": {
-            "patience": 15,
-            "factor": 0.1
+            "patience": 10,
+            "factor": 0.5
         }
     },
     "trainer": {
         "type": "TrainerPushPull",
-        "epochs": 400,
+        "epochs": 300,
         "save_dir": "saved/",
-        "save_period": 150,
-        "verbosity": 1,
+        "save_period": 300,
+        "verbosity": 0,
         "monitor": "min loss",
-        "early_stop": 50,
+        "early_stop": 10,
         "log_dir": "saved/runs",
         "plotz": true
     }

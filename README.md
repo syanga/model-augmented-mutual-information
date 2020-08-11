@@ -18,13 +18,15 @@ This experiment shows how a learned mapping can improve the performance of the k
 
 <img src="assets/bullseye.png" width="200">
 
-Let Y be the magnitude of X plus noise. The goal is to estimate I(X;Y), the MI between X and Y. The samples of X are spread across two rings instead of just along a single axis, which makes k-NN MI estimation more difficult. Therefore, before using the k-NN estimator, we would like to learn a mapping of X that looks more like the mapping on the left, than on the right:
+Let Y be the magnitude of X plus noise. The goal is to estimate I(X;Y), the MI between X and Y. The samples of X are spread across two rings instead of just along a single axis, which makes k-NN MI estimation more difficult. Therefore, before using the k-NN estimator, we would like to learn a mapping of X that looks more like:
 
 <img src="assets/mapping_regularized.png" width="200">
+
+as opposed to:
+
 <img src="assets/mapping_nominal.png" width="200">
 
-We learn this mapping with a regularization term that 
-
+We learn this mapping with a regularization term that maps values of X with similar information about Y (in this case, similar magnitudes) close together. This is done in the IPython notebook ```experiment_2d_bullseye.ipynb```.
 
 
 ## 2. Conditional Independence Testing
