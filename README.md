@@ -24,7 +24,7 @@ as opposed to:
 
 <img src="assets/mapping_nominal.png" width="200">
 
-We learn this mapping with a regularization term that maps values of X with similar information about Y (in this case, similar magnitudes) close together. This is done in the IPython notebook ```bullseye2d_experiment.ipynb```.
+We learn this mapping with a regularization term that maps values of X with similar information about Y (in this case, similar magnitudes) close together. This is done in the IPython notebook [```bullseye2d_experiment.ipynb```](bullseye2d_experiment.ipynb).
 
 
 ## 2. Conditional Independence Testing
@@ -33,4 +33,7 @@ In this experiment, we evaluate the performance of the k-NN based conditional in
 
 <img src="assets/dag7.png" width="200">
 
-Here, the features are 3-dimensional, and the target variable Y is a scalar. The Markov blanket of Y is highlighted in blue. We find that the k-NN test is not able to correctly find the Markov blanket (parents, children, and co-parents of Y) using a PC-type algorithm (see [```pycit```](https://github.com/syanga/pycit) documentation, and Algorithm 2 in our [paper](https://arxiv.org/abs/1911.04628)). However, using samples of a learned feature mapping allowed the k-NN method to succeed. The code for this experiment is in the IPython notebook ```bullseye3d_experiment.ipynb```.
+Here, the features are 3-dimensional, and the target variable Y is a scalar. The Markov blanket of Y is highlighted in blue. We find that the k-NN test is not able to correctly find the Markov blanket (parents, children, and co-parents of Y) using a PC-type algorithm (see [```pycit```](https://github.com/syanga/pycit) documentation, and Algorithm 2 in our [paper](https://arxiv.org/abs/1911.04628)). However, using samples of a learned feature mapping allowed the k-NN method to succeed. The code for this experiment is in the IPython notebook [```bullseye3d_experiment.ipynb```](bullseye3d_experiment.ipynb).
+
+
+
