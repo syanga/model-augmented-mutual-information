@@ -1,6 +1,6 @@
 # model-augmented-mutual-information
 
-This repository contains code related to the paper "Model-Augmented Conditional Mutual Information Estimation for Feature Selection," which appeared at the Conference on Uncertainty in Artificial Intelligence (UAI), 2020 [[Link to paper]](https://arxiv.org/abs/1911.04628).
+This repository contains code related to the paper "Model-Augmented Conditional Mutual Information Estimation for Feature Selection," which appeared at the 2020 Conference on Uncertainty in Artificial Intelligence (UAI) [[Link]](https://arxiv.org/abs/1911.04628).
 
 The code in this repository depends on [```pycit```](https://github.com/syanga/pycit), which can be installed using pip:
 ```
