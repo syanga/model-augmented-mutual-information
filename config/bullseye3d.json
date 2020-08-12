@@ -16,13 +16,13 @@
     "data_loader": {
         "type": "NpSupervisedDataLoader",
         "args": {
-            "x_path": "data/bullseye_3d_performance_x_data.npy",
-            "y_path": "data/bullseye_3d_performance_y_data.npy",
+            "x_path": "data/bullseye3dX.npy",
+            "y_path": "data/bullseye3dY.npy",
             "batch_size": 50,
             "shuffle": true,
             "validation_split": 0.0,
             "test_split": 0.0,
-            "num_workers": 4,
+            "num_workers": 0,
             "seed": 0
         }
     },
@@ -51,7 +51,7 @@
         "epochs": 400,
         "save_dir": "saved/",
         "save_period": 150,
-        "verbosity": 1,
+        "verbosity": 0,
         "monitor": "min loss",
         "early_stop": 50,
         "log_dir": "saved/runs",

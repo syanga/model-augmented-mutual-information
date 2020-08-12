@@ -41,43 +41,20 @@ class TrainerPushPull(BaseTrainer):
         self.train_z = None
         self.valid_z = None
 
-        self.block_keep = 1 - self.config['arch']['args']['block_drop']
-        assert 0 <= self.block_keep <= 1
-
         if "plotz" in self.config['trainer']:
             self.plotz = self.config['trainer']['plotz']
         else:
             self.plotz = False
-
-        if "pp_start_epoch" in self.config['loss']:
-            self.pp_start_epoch = self.config['loss']['pp_start_epoch']
-        else:
-            self.pp_start_epoch = 0
 
         if "reg_coeff" in self.config['loss']:
             self.reg_coeff = self.config['loss']['reg_coeff']
         else:
             self.reg_coeff = 0.0
 
-        if "reg_margin" in self.config['loss']:
-            self.margin = self.config['loss']['reg_margin']
-        else:
-            self.margin = np.inf
-
         if "l1_coeff" in self.config['loss']:
             self.l1_coeff = self.config['loss']['l1_coeff']
         else:
             self.l1_coeff = 0.0
-
-        if "jeffreys_batch" in self.config['loss']:
-            self.jeffreys_batch = self.config['loss']['jeffreys_batch']
-        else:
-            self.jeffreys_batch = 1
-
-        if "jeffreys_vars" in self.config['loss']:
-            self.jeffreys_vars = self.config['loss']['jeffreys_vars']
-        else:
-            self.jeffreys_vars = self.model.num_features
 
         # learning rate scheduler type
         if self.lr_scheduler is not None:
@@ -128,7 +105,6 @@ class TrainerPushPull(BaseTrainer):
 
                     # compute loss
                     loss += self.reg_coeff*torch.sum((distance-jeffreys).abs())/batch_size
-                    # loss += self.reg_coeff*torch.sum((distance-jeffreys)[jeffreys<self.margin].abs())/batch_size
 
         if self.model.training:
             loss.backward()
