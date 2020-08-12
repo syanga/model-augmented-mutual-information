@@ -1,10 +1,8 @@
 # model-augmented-mutual-information
 
-This repository contains code related to the paper "Model-Augmented Conditional Mutual Information Estimation for Feature Selection," which appeared at the Conference on Uncertainty in Artificial Intelligence (UAI), 2020.
+This repository contains code related to the paper "Model-Augmented Conditional Mutual Information Estimation for Feature Selection," which appeared at the Conference on Uncertainty in Artificial Intelligence (UAI), 2020 [[Link to paper]](https://arxiv.org/abs/1911.04628).
 
-Link to paper: https://arxiv.org/abs/1911.04628
-
-The code in this repository depends on ```pycit``` (https://github.com/syanga/pycit), which can be installed using pip:
+The code in this repository depends on [```pycit```](https://github.com/syanga/pycit), which can be installed using pip:
 ```
 pip install pycit
 ```
@@ -26,7 +24,13 @@ as opposed to:
 
 <img src="assets/mapping_nominal.png" width="200">
 
-We learn this mapping with a regularization term that maps values of X with similar information about Y (in this case, similar magnitudes) close together. This is done in the IPython notebook ```experiment_2d_bullseye.ipynb```.
+We learn this mapping with a regularization term that maps values of X with similar information about Y (in this case, similar magnitudes) close together. This is done in the IPython notebook ```bullseye2d_experiment.ipynb```.
 
 
 ## 2. Conditional Independence Testing
+
+In this experiment, we evaluate the performance of the k-NN based conditional independence test (CIT) on a 3D version of the Bullseye data, where the variables' distribution is faithful to the DAG structure:
+
+<img src="assets/dag7.png" width="200">
+
+Here, the features are 3-dimensional, and the target variable Y is a scalar. The Markov blanket of Y is highlighted in blue. We find that the k-NN test is not able to correctly find the Markov blanket (parents, children, and co-parents of Y) using a PC-type algorithm (see [```pycit```](https://github.com/syanga/pycit) documentation, and Algorithm 2 in our [paper](https://arxiv.org/abs/1911.04628)). However, using samples of a learned feature mapping allowed the k-NN method to succeed. The code for this experiment is in the IPython notebook ```bullseye3d_experiment.ipynb```.
